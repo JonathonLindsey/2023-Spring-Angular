@@ -12,6 +12,5 @@ export class VehiclesComponent {
     make: 'Honda',
     model: 'S2000',
     year: 2003,
-    color: 'green'
   };
 }
