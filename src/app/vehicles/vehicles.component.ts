@@ -8,5 +8,11 @@ import { VEHICLES } from '../mock-vehicles';
   styleUrls: ['./vehicles.component.css']
 })
 export class VehiclesComponent {
-  vehicles = VEHICLES
+  vehicles = VEHICLES;
+  selectedVehicle?: Vehicle;
+
+  onSelect(vehicle: Vehicle): void {
+    this.selectedVehicle = vehicle;
+    
+  }
 }
