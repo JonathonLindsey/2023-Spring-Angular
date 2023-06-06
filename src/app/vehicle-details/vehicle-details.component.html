@@ -1,0 +1,15 @@
+<div *ngIf="vehicle">
+    <h2>{{ vehicle.make | uppercase }} Details</h2>
+    <div><strong>ID:</strong> {{ vehicle.id }}</div>
+    <div>
+      <strong>Make:</strong> {{ vehicle.make }}
+    </div>
+    <div>
+       <label for="vehicel-model"><strong>Model</strong></label>
+       <input id="vehicle-model" [(ngModel)]="vehicle.model" placeholder="">
+    </div>
+    <div>
+      <strong>Year</strong> : {{ vehicle.year }}
+    </div>
+  </div>
+
