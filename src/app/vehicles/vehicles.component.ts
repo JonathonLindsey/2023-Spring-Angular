@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Vehicle } from '../vehicle';
-import { VEHICLES } from '../mock-vehicles';
+import { VehicleService } from '../vehicle.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-vehicles',
@@ -8,11 +9,26 @@ import { VEHICLES } from '../mock-vehicles';
   styleUrls: ['./vehicles.component.css']
 })
 export class VehiclesComponent {
-  vehicles = VEHICLES;
+  vehicles:Vehicle[] = [];
   selectedVehicle!: Vehicle;
 
+  constructor(private vehicleService:VehicleService,
+    private messageService: MessageService){}
+
   onSelect(vehicle: Vehicle): void {
+    this.messageService.add(`VehiclesComponent: onSelect(${vehicle.id})`)
     this.selectedVehicle = vehicle;
     
+  }
+
+  getVehicles(): void {
+    this.vehicleService.getVehicle()
+    .subscribe((vehicles) => {
+      this.vehicles
+    })
+  }
+
+  ngOnInit(): void {
+    this.getVehicles();
   }
 }
