@@ -24,7 +24,7 @@ export class VehiclesComponent {
   getVehicles(): void {
     this.vehicleService.getVehicle()
     .subscribe((vehicles) => {
-      this.vehicles
+      this.vehicles = vehicles;
     })
   }
 
