@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Vehicle } from './vehicle';
 import { VEHICLES } from './mock-vehicles';
 import { Observable, of } from 'rxjs';
@@ -8,8 +9,11 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class VehicleService {
+  //TODO: Ensure this is correct with CORS+PROXY
+  private vehiclesUrl = 'api/vi/vehicles';
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+    private http: HttpClient) { }
 
   getVehicles(): Observable<Vehicle[]> {
     const vehicles = of(VEHICLES);
