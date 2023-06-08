@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Vehicle } from './vehicle';
-import { VEHICLES } from './mock-vehicles'
+import { VEHICLES } from './mock-vehicles';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 
@@ -9,11 +9,21 @@ import { MessageService } from './message.service';
 })
 export class VehicleService {
 
-  constructor(private messagesService: MessageService) { }
+  constructor(private messageService: MessageService) { }
 
-  getVehicle(): Observable<Vehicle[]> {
+  getVehicles(): Observable<Vehicle[]> {
     const vehicles = of(VEHICLES);
-    this.messagesService.add('VehicleServie: getVehicles()');
+    this.messageService.add('VehicleService: getVehicles()');
     return vehicles;
+  }
+
+  getVehicle(id: string | null): Observable<Vehicle | undefined> {
+    if (!id) {
+      return of(undefined);
+    }
+    
+    const vehicle = VEHICLES.find(veh => veh.id === id);
+    this.messageService.add(`VehicleService: getVehicle(${id})`);
+    return of(vehicle);
   }
 }

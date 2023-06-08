@@ -1,7 +1,7 @@
+
 import { Component } from '@angular/core';
 import { Vehicle } from '../vehicle';
 import { VehicleService } from '../vehicle.service';
-
 
 @Component({
   selector: 'app-dashboard',
@@ -9,15 +9,15 @@ import { VehicleService } from '../vehicle.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  vehicles: Vehicle[] = []
+  vehicles: Vehicle[] = [];
 
   constructor(private vehicleService:VehicleService){}
 
   getVehicles(): void {
-    this.vehicleService.getVehicle()
-    .subscribe((vehicles) => {
-      this.vehicles = vehicles.slice(0, 5);
-    })
+    this.vehicleService.getVehicles()
+      .subscribe((vehicles) => {
+        this.vehicles = vehicles.slice(0, 5);
+      });
   }
 
   ngOnInit(): void {

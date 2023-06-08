@@ -2,36 +2,10 @@
 
 <ul class="vehicles">
   <li *ngFor="let vehicle of vehicles">
-    <button type="button" (click)="onSelect(vehicle)"
+    <a routerLink="/vehicles/{{ vehicle.id }}">
         [class.selected]="vehicle === selectedVehicle">
-        <span class="badge"> {{ vehicle.id.slice(0, 3) }}</span>
-        <span class="name"> {{ vehicle.make }}</span>
-    </button>
+      <span class="badge">{{ vehicle.id.slice(0, 3) }}</span>
+      <span class="name"> {{ vehicle.make }}</span>
+    </a>
   </li>
 </ul>
-
-<app-vehicle-details [vehicle]="selectedVehicle"></app-vehicle-details>
-
-
-
-
-<!--div>
-    <span>id: </span> {{ vehicle.id }}
-</div>
-
-
-<div>
-    <label for="make">Make: </label>
-    <input id="make" [(ngModel)]="vehicle.make" placeholder="Vehicle Make">
-</div>
-<div>
-    <label for="model">Model: </label>
-    <input id="model" [(ngModel)]="vehicle.model">
-</div>
-<div>
-    <label for="year">Year: </label>
-    <input id="year" [(ngModel)]="vehicle.year">
-</div-->
-
-
-
